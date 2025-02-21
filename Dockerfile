@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "financial_data_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "transactional_data_app.main:app", "--host", "0.0.0.0", "--port", "8000"]

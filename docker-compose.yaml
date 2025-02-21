@@ -12,10 +12,10 @@ x-airflow-common: &airflow-common
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'false'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
-    - ./OpenTaxEtl/dags:/opt/airflow/dags
-    - ./OpenTaxEtl/logs:/opt/airflow/logs
-    - ./OpenTaxEtl/config:/opt/airflow/config
-    - ./OpenTaxEtl/plugins:/opt/airflow/plugins
+    - ./OpenTaxEtl/dags:/opt/OpenTaxEtl/dags
+    - ./OpenTaxEtl/logs:/opt/OpenTaxEtl/logs
+    - ./OpenTaxEtl/config:/opt/OpenTaxEtl/config
+    - ./OpenTaxEtl/plugins:/opt/OpenTaxEtl/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on: &airflow-common-depends-on
     postgres:
@@ -38,19 +38,6 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-
-  fastapi:
-    build:
-      context: ./OpenTaxApp  # Use the Dockerfile in the `fastapi/` directory
-      dockerfile: Dockerfile
-    container_name: opentax_api
-    restart: always
-    ports:
-      - "8000:8000"
-    depends_on:
-      - postgres
-    environment:
-      DATABASE_URL: "postgresql://airflow:admin@postgres:5432/opentaxdb"
 
   airflow-webserver:
     <<: *airflow-common
@@ -99,9 +86,9 @@ services:
           echo "    See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user"
           echo
         fi
-        mkdir -p /sources/logs /sources/dags /sources/plugins
-        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
-        exec /entrypoint airflow version
+        mkdir -p /sources/OpenTaxEtl/logs /sources//OpenTaxEtl/dags /sources//OpenTaxEtl/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/OpenTaxEtl{logs,dags,plugins}
+        exec /entrypoint/OpenTaxEtl airflow version
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: 'true'

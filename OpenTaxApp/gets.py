@@ -22,7 +22,7 @@ async def test_db_conn(db: Session= Depends(get_db)):
         raise HTTPException(status_code=500, detail=f'Failed to connect to database: str{e}')
 
 @router.get("/user_metrics/{user_id}", response_model=UserTransactionSummary)
-def get_transaction_summary(user_id: int, db: Session = Depends(get_db)):
+async def get_transaction_summary(user_id: int, db: Session = Depends(get_db)):
 
     # manually check if user is present in db..
 

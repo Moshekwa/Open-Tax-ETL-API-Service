@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from routers.gets import router as get_router
+import gets
+from db import engine, Base
 
-app = FastAPI(title="Open-Tax Transaction API")
+Base.metadata.create_all(bind=engine)
 
-app.include_router(get_router)
+app = FastAPI(title="Open-Tax Transaction APP")
+
+app.include_router(gets.router)
+

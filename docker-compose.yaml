@@ -63,14 +63,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fastapi_service
+    container_name: opentax_api_service
     restart: always
     ports:
       - "8000:8000"
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: "postgresql://airflow:opentaxdb@postgres:5432/opentaxdb"
+      DATABASE_URL: "postgresql://airflow:admin@postgres:5432/opentaxdb"
 
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
@@ -221,3 +221,4 @@ services:
 
 volumes:
   postgres-db-volume:
+

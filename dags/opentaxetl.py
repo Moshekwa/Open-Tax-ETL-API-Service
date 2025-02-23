@@ -13,21 +13,37 @@ logging.basicConfig(
 )
 
 def extract_transactional_data(**kwargs):
+    """
+    Extracts transactional data from a CSV file and stores it in XCom for downstream tasks.
+
+    This function reads a CSV file containing financial transactions, converts the data into
+    a list of dictionaries, and pushes the data to XCom for use in subsequent tasks. It also
+    logs the extraction process and any errors that occur.
+
+    Args:
+        **kwargs: Keyword arguments containing task instance (`ti`), DAG, and task information.
+
+    Raises:
+        Exception: If an error occurs during data extraction, it is logged and raised.
+
+    Notes:
+        - The CSV file path is hardcoded as 'dags/data/financial_transactions.csv'.
+        - The extracted data is pushed to XCom with the key 'extracted_data'.
+        - Audit logs are created for both successful and failed extraction attempts.
+    """
     try:
-        #csv_file_path = 'data/financial_transactions.csv'
         logging.info('Beginning to extract data from source')
         csv_file_path = 'dags/data/financial_transactions.csv'
         df = pd.read_csv(csv_file_path)
 
         # Convert DataFrame to dictionary
-        transaction_data_dict = df.to_dict(orient='records')  # 'records' creates a list of dictionaries
-        #transaction_data_dict = df.to_json()
+        transaction_data_dict = df.to_dict(orient='records')  # creating a list of dictionaries
+
         kwargs['ti'].xcom_push(key='extracted_data', value=transaction_data_dict)
 
         dag_id = kwargs['dag'].dag_id
         task_id = kwargs['task'].task_id
 
-        #engine = PostgresHook(postgres_conn_id='opentax_postgres_conn').get_sqlalchemy_engine()
         audit_logs(dag_id,task_id,'INFO','Succesfully Extracted Data from CSV')
         logging.info('Data Extraction Completed')
     except Exception as e:
@@ -90,7 +106,23 @@ def transform_data(**kwargs):
 
 def load_transactional_data(**kwargs):
     """
+        Loads transformed transactional data into a PostgreSQL database table.
 
+        This function retrieves transformed data from XCom, converts it into a DataFrame,
+        and inserts it into a PostgreSQL table named 'transactions'. It also logs the loading
+        process and any errors that occur.
+
+        Args:
+            **kwargs: Keyword arguments containing task instance (`ti`), DAG, and task information.
+
+        Raises:
+            Exception: If an error occurs during data loading, it is logged and raised.
+
+        Notes:
+            - The transformed data is pulled from XCom using the key 'transformed_data'.
+            - The PostgreSQL connection is managed using the `PostgresHook` with the connection ID 'opentax_postgres_conn'.
+            - The DataFrame is inserted into the 'transactions' table using the `to_sql` method.
+            - Audit logs are created for both successful and failed loading attempts.
     """
     try:
         logging.info('Executing data loading into target table')

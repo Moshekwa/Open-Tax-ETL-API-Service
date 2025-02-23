@@ -1,3 +1,6 @@
 /OpenTaxEnv
 .env
 /dags/data
+.idea
+.DS_Store
+/logs

@@ -1828,3 +1828,143 @@ SyntaxError: '(' was never closed
 [2025-02-23T11:50:52.343+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:50:52.343+0000] {dag.py:3089} INFO - Sync 1 DAGs
 [2025-02-23T11:50:52.359+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:50:52.358+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
 [2025-02-23T11:50:52.371+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.798 seconds
+[2025-02-23T11:51:22.835+0000] {processor.py:161} INFO - Started process (PID=2540) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:22.839+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:51:22.842+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:22.842+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:23.522+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:23.569+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:23.568+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:51:23.589+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:23.589+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:51:23.603+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.806 seconds
+[2025-02-23T11:51:54.064+0000] {processor.py:161} INFO - Started process (PID=2552) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:54.067+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:51:54.069+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:54.068+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:54.431+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:51:54.670+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:54.669+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:51:54.686+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:51:54.686+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:51:54.701+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.653 seconds
+[2025-02-23T11:52:25.083+0000] {processor.py:161} INFO - Started process (PID=2564) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:25.089+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:52:25.091+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:25.090+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:26.063+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:26.465+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:26.465+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:52:26.481+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:26.481+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:52:26.494+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 1.431 seconds
+[2025-02-23T11:52:56.932+0000] {processor.py:161} INFO - Started process (PID=2576) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:56.937+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:52:56.940+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:56.939+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:57.558+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:52:57.580+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:57.580+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:52:57.594+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:52:57.593+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:52:57.604+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.734 seconds
+[2025-02-23T11:53:27.954+0000] {processor.py:161} INFO - Started process (PID=2588) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:53:27.958+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:53:27.959+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:53:27.958+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:53:28.589+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:53:28.628+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:53:28.628+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:53:28.642+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:53:28.642+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:53:28.655+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.716 seconds
+[2025-02-23T11:53:59.454+0000] {processor.py:161} INFO - Started process (PID=2600) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:53:59.461+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:53:59.464+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:53:59.463+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:54:00.454+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:54:00.529+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:54:00.525+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:54:00.568+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:54:00.567+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:54:00.591+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 1.214 seconds
+[2025-02-23T11:54:30.842+0000] {processor.py:161} INFO - Started process (PID=2611) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:54:30.846+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:54:30.848+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:54:30.847+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:54:31.474+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:54:31.495+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:54:31.494+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:54:31.511+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:54:31.511+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:54:31.530+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.704 seconds
+[2025-02-23T11:55:01.944+0000] {processor.py:161} INFO - Started process (PID=2623) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:01.947+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:55:01.949+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:01.948+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:02.378+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:02.668+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:02.667+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:55:02.684+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:02.683+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:55:02.695+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.765 seconds
+[2025-02-23T11:55:33.142+0000] {processor.py:161} INFO - Started process (PID=2634) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:33.146+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:55:33.149+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:33.148+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:33.726+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:55:33.757+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:33.757+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:55:33.772+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:55:33.772+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:55:33.784+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.654 seconds
+[2025-02-23T11:56:04.105+0000] {processor.py:161} INFO - Started process (PID=2645) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:04.107+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:56:04.109+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:04.108+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:04.718+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:04.742+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:04.742+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:56:04.760+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:04.760+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:56:04.772+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.676 seconds
+[2025-02-23T11:56:35.112+0000] {processor.py:161} INFO - Started process (PID=2657) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:35.114+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:56:35.115+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:35.115+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:35.747+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:56:35.777+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:35.777+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:56:35.793+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:56:35.793+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:56:35.805+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.699 seconds
+[2025-02-23T11:57:06.162+0000] {processor.py:161} INFO - Started process (PID=2669) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:06.175+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:57:06.176+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:06.176+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:06.953+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:06.984+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:06.983+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:57:07.003+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:07.002+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:57:07.019+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.884 seconds
+[2025-02-23T11:57:37.396+0000] {processor.py:161} INFO - Started process (PID=2681) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:37.402+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:57:37.412+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:37.410+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:38.097+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:57:38.125+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:38.125+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:57:38.141+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:57:38.141+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:57:38.160+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.778 seconds
+[2025-02-23T11:58:08.525+0000] {processor.py:161} INFO - Started process (PID=2692) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:08.529+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:58:08.530+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:08.530+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:08.925+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:09.256+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:09.256+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:58:09.271+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:09.271+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:58:09.282+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.771 seconds
+[2025-02-23T11:58:39.626+0000] {processor.py:161} INFO - Started process (PID=2704) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:39.630+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:58:39.632+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:39.631+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:40.373+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:58:40.403+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:40.403+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:58:40.418+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:58:40.418+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:58:40.429+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.815 seconds
+[2025-02-23T11:59:10.563+0000] {processor.py:161} INFO - Started process (PID=2716) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:10.567+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:59:10.568+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:10.568+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:11.163+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:11.190+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:11.189+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:59:11.208+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:11.208+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:59:11.220+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.669 seconds
+[2025-02-23T11:59:41.678+0000] {processor.py:161} INFO - Started process (PID=2728) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:41.682+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T11:59:41.683+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:41.683+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:42.339+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T11:59:42.375+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:42.374+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T11:59:42.392+0000] {logging_mixin.py:188} INFO - [2025-02-23T11:59:42.391+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T11:59:42.403+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.740 seconds
+[2025-02-23T12:00:12.763+0000] {processor.py:161} INFO - Started process (PID=2746) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:12.766+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T12:00:12.768+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:12.767+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:13.586+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:13.612+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:13.612+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T12:00:13.629+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:13.628+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T12:00:13.641+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 0.892 seconds
+[2025-02-23T12:00:43.863+0000] {processor.py:161} INFO - Started process (PID=2758) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:43.866+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T12:00:43.868+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:43.867+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:44.943+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:00:45.009+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:45.008+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T12:00:45.026+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:00:45.026+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T12:00:45.039+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 1.190 seconds
+[2025-02-23T12:01:15.654+0000] {processor.py:161} INFO - Started process (PID=2769) to work on /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:01:15.659+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/opentaxetl.py for tasks to queue
+[2025-02-23T12:01:15.663+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:01:15.662+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:01:16.607+0000] {processor.py:840} INFO - DAG(s) 'open_tax_etl' retrieved from /opt/airflow/dags/opentaxetl.py
+[2025-02-23T12:01:17.372+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:01:17.371+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2025-02-23T12:01:17.432+0000] {logging_mixin.py:188} INFO - [2025-02-23T12:01:17.432+0000] {dag.py:3947} INFO - Setting next_dagrun for open_tax_etl to None, run_after=None
+[2025-02-23T12:01:17.452+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/opentaxetl.py took 1.840 seconds

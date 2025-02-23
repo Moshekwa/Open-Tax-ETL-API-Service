@@ -1,19 +1,43 @@
+import logging
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime, timedelta
 import pandas as pd
+from pipeline_logs import audit_logs
+
+# Configure logging format to include timestamps for audit
+logging.basicConfig(
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+default_args = {
+    'owner': 'Matthews Malatji',
+    'description':'A simple OpenTax ETL pipeline using Airflow',
+    'depends_on_past': False,
+    'retries': 5,
+    'retry_delay': timedelta(minutes=5),
+}
 
 def extract_transactional_data(**kwargs):
     #csv_file_path = 'data/financial_transactions.csv'
+    logging.info('Beginning to extract data from source')
     csv_file_path = 'dags/data/financial_transactions.csv'
     df = pd.read_csv(csv_file_path)
 
     # Convert DataFrame to dictionary
     transaction_data_dict = df.to_dict(orient='records')  # 'records' creates a list of dictionaries
-
     #transaction_data_dict = df.to_json()
     kwargs['ti'].xcom_push(key='extracted_data', value=transaction_data_dict)
+
+
+    dag_id = kwargs['dag'].dag_id
+    task_id = kwargs['task'].task_id
+
+    #engine = PostgresHook(postgres_conn_id='opentax_postgres_conn').get_sqlalchemy_engine()
+    audit_logs(dag_id,task_id,'INFO','SuccesfullY Extracted Data from CSV')
+    logging.info('Data Extraction Completed')
 
 def transform_data(**kwargs):
     """
@@ -67,14 +91,15 @@ def load_transactional_data(**kwargs):
     engine = postgres_hook.get_sqlalchemy_engine()
 
     # Insert DataFrame into PostgreSQL
-    df.to_sql('transactions', con=engine, if_exists='replace', index=False)
+    df.to_sql('transactions', con=engine, if_exists='replace', index=True)
 
     print('Data Succesfully written to database')
 
 with DAG(
     dag_id="open_tax_etl",
+    description='A simple OpenTax ETL pipeline using Airflow',
     start_date=datetime(2023, 1, 1),
-    schedule_interval="@once",
+    schedule_interval="@once", # Triggers DAG Execution at Midnight
     catchup=False
 ) as dag:
     extract_task = PythonOperator(
@@ -93,4 +118,5 @@ with DAG(
         provide_context=True
     )
 
-    extract_task >> transform_task >> load_task
+    extract_task
+    # extract_task >> transform_task >> load_task

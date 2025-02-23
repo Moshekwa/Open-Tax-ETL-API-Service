@@ -4,3 +4,5 @@
 .idea
 .DS_Store
 /logs
+/config
+/OpenTaxApp/config.py

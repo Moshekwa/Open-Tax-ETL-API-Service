@@ -25,6 +25,10 @@ async def test_db_conn(db: Session= Depends(get_db)):
 async def get_transaction_summary(user_id: int, db: Session = Depends(get_db)):
 
     # manually check if user is present in db..
+    # Check if the user exists
+    user_exists = db.query(Transaction).filter(Transaction.user_id == user_id).first()
+    if not user_exists:
+        raise HTTPException(status_code=404, detail="User not found in database")
 
     # Calculating a user's metrics
     result = db.query(

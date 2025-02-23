@@ -11,7 +11,65 @@ def extract_transactional_data(**kwargs):
 
     # Convert DataFrame to dictionary
     transaction_data_dict = df.to_dict(orient='records')  # 'records' creates a list of dictionaries
+
+    #transaction_data_dict = df.to_json()
     kwargs['ti'].xcom_push(key='extracted_data', value=transaction_data_dict)
+
+def transform_data(**kwargs):
+    """
+    Transform the input DataFrame by cleaning and processing the data in the following order:
+    1. Remove dollar sign from the 'amount' column and convert to float
+    2. Fill NaN values in the 'amount' column with 0
+    3. Convert 'transaction_date' to datetime encforcing errors
+    4. Drop duplicate rows, keeping rows with the same tranasction_id from different users
+
+    Args:
+        dataframe (pd.DataFrame): The input DataFrame containing transaction data.
+
+    Returns:
+        pd.DataFrame: The transformed DataFrame.
+    """
+    task_instance = kwargs['ti']
+    extracted_data = task_instance.xcom_pull(task_ids='extract_task', key='extracted_data')
+
+    dataframe = pd.DataFrame(extracted_data)
+
+    # Debug: Print columns and first few rows
+    print("Columns in DataFrame:", dataframe.columns)
+    print("First few rows of DataFrame:\n", dataframe.head())
+
+    dataframe['amount'] = dataframe['amount'].fillna(0)
+    dataframe['amount'] = dataframe['amount'].str.replace('$', '', regex=False).astype(float)
+
+    dataframe['transaction_date'] = pd.to_datetime(dataframe['transaction_date'], errors='coerce', dayfirst=True)
+    dataframe['transaction_date'] = dataframe['transaction_date'].dt.strftime('%Y-%m-%d')
+
+    # Replacing unknown date records with an invalid date
+    dataframe['transaction_date'] = dataframe['transaction_date'].fillna('1970-01-01')
+
+    dataframe.drop_duplicates(inplace=True)
+    transformed_data_dict = dataframe.to_dict(orient='records')
+
+    kwargs['ti'].xcom_push(key='transformed_data', value=transformed_data_dict)
+
+def load_transactional_data(**kwargs):
+    """
+
+    """
+    ti = kwargs['ti']
+    transformed_data = ti.xcom_pull(task_ids='transform_task', key='transformed_data')
+
+    df = pd.DataFrame(transformed_data)
+
+    postgres_hook = PostgresHook(postgres_conn_id='opentax_postgres_conn')
+
+    # Get SQLAlchemy engine from the hook
+    engine = postgres_hook.get_sqlalchemy_engine()
+
+    # Insert DataFrame into PostgreSQL
+    df.to_sql('transactions', con=engine, if_exists='replace', index=False)
+
+    print('Data Succesfully written to database')
 
 with DAG(
     dag_id="open_tax_etl",
@@ -24,5 +82,15 @@ with DAG(
         python_callable=extract_transactional_data,
         provide_context=True,
     )
+    transform_task = PythonOperator(
+        task_id='transform_task',
+        python_callable=transform_data,
+        provide_context=True
+    )
+    load_task = PythonOperator(
+        task_id='load_task',
+        python_callable=load_transactional_data,
+        provide_context=True
+    )
 
-    extract_task
+    extract_task >> transform_task >> load_task

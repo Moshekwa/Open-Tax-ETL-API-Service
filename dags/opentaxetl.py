@@ -12,32 +12,30 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-default_args = {
-    'owner': 'Matthews Malatji',
-    'description':'A simple OpenTax ETL pipeline using Airflow',
-    'depends_on_past': False,
-    'retries': 5,
-    'retry_delay': timedelta(minutes=5),
-}
-
 def extract_transactional_data(**kwargs):
-    #csv_file_path = 'data/financial_transactions.csv'
-    logging.info('Beginning to extract data from source')
-    csv_file_path = 'dags/data/financial_transactions.csv'
-    df = pd.read_csv(csv_file_path)
+    try:
+        #csv_file_path = 'data/financial_transactions.csv'
+        logging.info('Beginning to extract data from source')
+        csv_file_path = 'dags/data/financial_transactions.csv'
+        df = pd.read_csv(csv_file_path)
 
-    # Convert DataFrame to dictionary
-    transaction_data_dict = df.to_dict(orient='records')  # 'records' creates a list of dictionaries
-    #transaction_data_dict = df.to_json()
-    kwargs['ti'].xcom_push(key='extracted_data', value=transaction_data_dict)
+        # Convert DataFrame to dictionary
+        transaction_data_dict = df.to_dict(orient='records')  # 'records' creates a list of dictionaries
+        #transaction_data_dict = df.to_json()
+        kwargs['ti'].xcom_push(key='extracted_data', value=transaction_data_dict)
 
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
 
-    dag_id = kwargs['dag'].dag_id
-    task_id = kwargs['task'].task_id
+        #engine = PostgresHook(postgres_conn_id='opentax_postgres_conn').get_sqlalchemy_engine()
+        audit_logs(dag_id,task_id,'INFO','Succesfully Extracted Data from CSV')
+        logging.info('Data Extraction Completed')
+    except Exception as e:
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
 
-    #engine = PostgresHook(postgres_conn_id='opentax_postgres_conn').get_sqlalchemy_engine()
-    audit_logs(dag_id,task_id,'INFO','SuccesfullY Extracted Data from CSV')
-    logging.info('Data Extraction Completed')
+        audit_logs(dag_id,task_id,'ERROR',str(e))
+        logging.error('Failed to extract Data from CSV')
 
 def transform_data(**kwargs):
     """
@@ -53,47 +51,73 @@ def transform_data(**kwargs):
     Returns:
         pd.DataFrame: The transformed DataFrame.
     """
-    task_instance = kwargs['ti']
-    extracted_data = task_instance.xcom_pull(task_ids='extract_task', key='extracted_data')
+    try:
 
-    dataframe = pd.DataFrame(extracted_data)
+        logging.info('Beginning Data Processing')
 
-    # Debug: Print columns and first few rows
-    print("Columns in DataFrame:", dataframe.columns)
-    print("First few rows of DataFrame:\n", dataframe.head())
+        task_instance = kwargs['ti']
+        extracted_data = task_instance.xcom_pull(task_ids='extract_task', key='extracted_data')
 
-    dataframe['amount'] = dataframe['amount'].fillna(0)
-    dataframe['amount'] = dataframe['amount'].str.replace('$', '', regex=False).astype(float)
+        dataframe = pd.DataFrame(extracted_data)
 
-    dataframe['transaction_date'] = pd.to_datetime(dataframe['transaction_date'], errors='coerce', dayfirst=True)
-    dataframe['transaction_date'] = dataframe['transaction_date'].dt.strftime('%Y-%m-%d')
+        dataframe['amount'] = dataframe['amount'].fillna(0)
+        dataframe['amount'] = dataframe['amount'].str.replace('$', '', regex=False).astype(float)
 
-    # Replacing unknown date records with an invalid date
-    dataframe['transaction_date'] = dataframe['transaction_date'].fillna('1970-01-01')
+        dataframe['transaction_date'] = pd.to_datetime(dataframe['transaction_date'], errors='coerce', dayfirst=True)
+        dataframe['transaction_date'] = dataframe['transaction_date'].dt.strftime('%Y-%m-%d')
 
-    dataframe.drop_duplicates(inplace=True)
-    transformed_data_dict = dataframe.to_dict(orient='records')
+        # Replacing unknown date records with an invalid date
+        dataframe['transaction_date'] = dataframe['transaction_date'].fillna('1970-01-01')
 
-    kwargs['ti'].xcom_push(key='transformed_data', value=transformed_data_dict)
+        dataframe.drop_duplicates(inplace=True)
+        transformed_data_dict = dataframe.to_dict(orient='records')
+
+        kwargs['ti'].xcom_push(key='transformed_data', value=transformed_data_dict)
+
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
+
+        # engine = PostgresHook(postgres_conn_id='opentax_postgres_conn').get_sqlalchemy_engine()
+        audit_logs(dag_id, task_id, 'INFO', f'Succesfully Processed and Transformed {len(dataframe)} rows')
+        logging.info('Data Processing Completed')
+
+    except Exception as e:
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
+
+        audit_logs(dag_id, task_id, 'ERROR', str(e))
+        logging.error(f'Failed to transform data: str{e}')
 
 def load_transactional_data(**kwargs):
     """
 
     """
-    ti = kwargs['ti']
-    transformed_data = ti.xcom_pull(task_ids='transform_task', key='transformed_data')
+    try:
+        logging.info('Executing data loading into target table')
+        ti = kwargs['ti']
+        transformed_data = ti.xcom_pull(task_ids='transform_task', key='transformed_data')
 
-    df = pd.DataFrame(transformed_data)
+        df = pd.DataFrame(transformed_data)
 
-    postgres_hook = PostgresHook(postgres_conn_id='opentax_postgres_conn')
+        postgres_hook = PostgresHook(postgres_conn_id='opentax_postgres_conn')
 
-    # Get SQLAlchemy engine from the hook
-    engine = postgres_hook.get_sqlalchemy_engine()
+        # Get SQLAlchemy engine from the hook
+        engine = postgres_hook.get_sqlalchemy_engine()
 
-    # Insert DataFrame into PostgreSQL
-    df.to_sql('transactions', con=engine, if_exists='replace', index=True)
+        # Insert DataFrame into PostgreSQL
+        df.to_sql('transactions', con=engine, if_exists='replace', index=True)
 
-    print('Data Succesfully written to database')
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
+        audit_logs(dag_id, task_id, 'INFO', f'Succesfully Loaded {len(df)} rows to the Open Tax Database')
+        logging.info('Data loading into target table completed')
+
+    except Exception as e:
+        dag_id = kwargs['dag'].dag_id
+        task_id = kwargs['task'].task_id
+
+        audit_logs(dag_id, task_id, 'ERROR', str(e))
+        logging.error(f'Failed to load data: str{e}')
 
 with DAG(
     dag_id="open_tax_etl",
@@ -118,5 +142,4 @@ with DAG(
         provide_context=True
     )
 
-    extract_task
-    # extract_task >> transform_task >> load_task
+    extract_task >> transform_task >> load_task

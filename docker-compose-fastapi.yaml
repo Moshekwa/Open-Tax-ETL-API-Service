@@ -1,30 +1,31 @@
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: adminadsum
-      POSTGRES_PASSWORD: passadsum
-      POSTGRES_DB: transactions_db
-    ports:
-      - "5433:5432"
-    volumes:
-      - OpenTaxApp-postgres-data:/var/lib/postgresql/data
-    networks:
-      - OpenTaxApp-network
-
   fastapi:
     build: ./OpenTaxApp
     environment:
-      DATABASE_URL: "postgresql://adminadsum:passadsum@postgres:5432/transactions_db"
+      DATABASE_URL: "postgresql://airflow:admin@postgres:5432/airflow"
     ports:
       - "6000:6000"
-    depends_on:
-      - postgres
-    networks:
-      - OpenTaxApp-network
+    #depends_on:
+    #  - postgres
+    #networks:
+    #  - OpenTaxApp-network
+
+  #postgres:
+  #  image: postgres:13
+  #  environment:
+  #    POSTGRES_USER: adminadsum
+  #    POSTGRES_PASSWORD: passadsum
+  #    POSTGRES_DB: transactions_db
+  #  ports:
+  #    - "5433:5432"
+  #  volumes:
+  #    - OpenTaxApp-postgres-data:/var/lib/postgresql/data
+  #  networks:
+  #    - OpenTaxApp-network
+
 
 volumes:
   OpenTaxApp-postgres-data:
-networks:
-  OpenTaxApp-network:
-    driver: bridge
+#networks:
+#  OpenTaxApp-network:
+#    driver: bridge

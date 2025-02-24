@@ -1,6 +1,8 @@
 import pandas as pd
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
+from sqlalchemy.exc import SQLAlchemyError
+
 def audit_logs(dag_id,task_id,log_level,log_message) -> None:
     """
     Logs task execution details into the `task_execution_logs` table in PostgreSQL.

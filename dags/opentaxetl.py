@@ -86,6 +86,7 @@ def transform_data(**kwargs):
         dataframe['transaction_date'] = dataframe['transaction_date'].fillna('1970-01-01')
 
         dataframe.drop_duplicates(inplace=True)
+
         transformed_data_dict = dataframe.to_dict(orient='records')
 
         kwargs['ti'].xcom_push(key='transformed_data', value=transformed_data_dict)

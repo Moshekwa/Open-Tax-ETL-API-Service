@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 class Transaction(Base):
     __tablename__ = 'transactions'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    index = Column(Integer, primary_key=True, autoincrement=True)
     transaction_id = Column(String(50), unique=True, nullable=False)
     user_id = Column(Integer, nullable=False)
     amount = Column(Float, nullable=False)

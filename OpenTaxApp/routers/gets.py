@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import text,func
+from sqlalchemy.exc import SQLAlchemyError
 
 from database_service.db import get_db
 from models.model import Transaction

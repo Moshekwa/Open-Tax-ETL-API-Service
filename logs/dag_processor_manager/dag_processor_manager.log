@@ -3763,3 +3763,137 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 [2025-02-24T08:35:45.190+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
 [2025-02-24T08:35:45.200+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
 [2025-02-24T08:36:20.596+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:26:13.467+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-02-24T12:26:13.471+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-02-24T12:26:13.471+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-02-24T12:26:13.472+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-02-24T12:26:13.483+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
+[2025-02-24T12:26:13.841+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/opentaxetl.py       187  0.12s             0           0
+/opt/airflow/dags/pipeline_logs.py    190  0.10s             0           0
+================================================================================
+[2025-02-24T12:26:29.546+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:28:09.247+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-02-24T12:28:09.251+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-02-24T12:28:09.257+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-02-24T12:28:09.259+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-02-24T12:28:09.306+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
+[2025-02-24T12:28:10.521+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/opentaxetl.py       199  0.38s             0           0
+/opt/airflow/dags/pipeline_logs.py    202  0.28s             0           0
+================================================================================
+[2025-02-24T12:28:15.014+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:28:15.015+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:28:16.667+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:29:26.616+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-02-24T12:29:26.619+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-02-24T12:29:26.620+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-02-24T12:29:26.621+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-02-24T12:29:26.643+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
+[2025-02-24T12:29:27.040+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/opentaxetl.py       181  0.12s             0           0
+/opt/airflow/dags/pipeline_logs.py    184  0.10s             0           0
+================================================================================
+[2025-02-24T12:29:57.491+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  3.21s           2025-02-24T12:29:30
+/opt/airflow/dags/pipeline_logs.py                           0           0  2.28s           2025-02-24T12:29:29
+================================================================================
+[2025-02-24T12:30:27.817+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.73s           2025-02-24T12:30:00
+/opt/airflow/dags/opentaxetl.py                              1           0  0.36s           2025-02-24T12:30:00
+================================================================================
+[2025-02-24T12:30:57.838+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  0.77s           2025-02-24T12:30:31
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.69s           2025-02-24T12:30:31
+================================================================================
+[2025-02-24T12:31:28.658+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  0.59s           2025-02-24T12:31:02
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.48s           2025-02-24T12:31:02
+================================================================================
+[2025-02-24T12:31:59.413+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  0.52s           2025-02-24T12:31:33
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.44s           2025-02-24T12:31:33
+================================================================================
+[2025-02-24T12:32:29.587+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  0.91s           2025-02-24T12:32:04
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.49s           2025-02-24T12:32:03
+================================================================================
+[2025-02-24T12:32:58.310+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-02-24T12:34:44.229+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-02-24T12:34:44.231+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-02-24T12:34:44.232+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-02-24T12:34:44.232+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-02-24T12:34:44.247+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
+[2025-02-24T12:34:44.645+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/opentaxetl.py       187  0.10s             0           0
+/opt/airflow/dags/pipeline_logs.py    190  0.09s             0           0
+================================================================================
+[2025-02-24T12:35:14.873+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/opentaxetl.py                              1           0  3.44s           2025-02-24T12:34:47
+/opt/airflow/dags/pipeline_logs.py                           0           0  2.69s           2025-02-24T12:34:47
+================================================================================
+[2025-02-24T12:35:45.089+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/pipeline_logs.py                           0           0  0.82s           2025-02-24T12:35:18
+/opt/airflow/dags/opentaxetl.py                              1           0  0.63s           2025-02-24T12:35:18
+================================================================================
+[2025-02-24T12:36:01.710+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15

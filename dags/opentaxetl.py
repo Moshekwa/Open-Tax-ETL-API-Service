@@ -136,11 +136,12 @@ def load_transactional_data(**kwargs):
         # Get SQLAlchemy engine from the hook
         engine = postgres_hook.get_sqlalchemy_engine()
 
-        # Insert DataFrame into PostgreSQL
+        # Insert DataFrame into PostgreSQL, using replace for testing purpose
         df.to_sql('transactions', con=engine, if_exists='replace', index=True)
 
         dag_id = kwargs['dag'].dag_id
         task_id = kwargs['task'].task_id
+
         audit_logs(dag_id, task_id, 'INFO', f'Succesfully Loaded {len(df)} rows to the Open Tax Database')
         logging.info('Data loading into target table completed')
 

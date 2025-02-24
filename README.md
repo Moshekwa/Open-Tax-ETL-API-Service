@@ -35,6 +35,7 @@ cd OpenTaxProject
 Run the following command to build and start the required services:
 ```sh
 docker-compose -f docker-compose-opentaxapp.yaml up --build
+docker-compose -f docker-compose-fastapi.yaml
 ```
 This will start the following services:
 - PostgreSQL Database (Port: 5432)
@@ -63,11 +64,11 @@ Default Credentials for Airflow UI login:
 - **Password:** admin
 
 Default Credentials for AirFlow and Postgres Database Connection:
-- **Username:** airflow_adsum
-- **Password:** admin_adsum
+- **Username:** airflow
+- **Password:** admin
 - **Host** postgres
 - **Port*** 5432
-- **Database** opentaxdb
+- **Database** airflow
 
 ## API Endpoint
 ###  Database Health Check
@@ -90,7 +91,8 @@ class Transaction(Base):
 ## Stopping the Services
 To stop the running containers, use:
 ```sh
-docker-compose -f docker-compose-opentaxapp.yaml down
+docker-compose -f docker-compose-airflow.yaml down
+docker-compose -f docker-compose-fastapi.yaml down
 ```
 
 ## Troubleshooting

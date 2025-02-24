@@ -9,7 +9,7 @@ x-airflow-common:
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow_adsum:admin_adsum@postgres/opentaxdb
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:admin@postgres/airflow
     # AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     #AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__FERNET_KEY: ''
@@ -44,26 +44,19 @@ services:
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_USER: airflow_adsum
-      POSTGRES_PASSWORD: admin_adsum
-      POSTGRES_DB: opentaxdb
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: airflow
     ports:
       - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "opentaxdb"]
+      test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
       retries: 5
       start_period: 5s
     restart: always
-
-  fastapi:
-    build: ./OpenTaxApp
-    environment:
-      DATABASE_URL: "postgresql://airflow_adsum:admin_adsum@postgres:5432/opentaxdb"
-    ports:
-      - "6000:6000"
 
   #redis:
     # Redis is limited to 7.2-bookworm due to licencing change
@@ -159,8 +152,8 @@ services:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: 'true'
       _AIRFLOW_WWW_USER_CREATE: 'true'
-      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow_adsum}
-      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-admin_adsum}
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-admin}
       _PIP_ADDITIONAL_REQUIREMENTS: ''
     user: "0:0"
     volumes:

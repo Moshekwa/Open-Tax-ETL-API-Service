@@ -1,0 +1,10 @@
+services:
+  fastapi:
+    build: ./OpenTaxApp
+    environment:
+      DATABASE_URL: "postgresql://airflow:admin@postgres:5432/airflow"
+    ports:
+      - "6000:6000"
+
+volumes:
+  OpenTaxApp-postgres-data:

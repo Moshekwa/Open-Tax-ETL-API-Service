@@ -1,5 +1,6 @@
 from database_service.db import Base
-from sqlalchemy import Column, Integer, String, Float, Date
+from sqlalchemy import Column, Integer, String, Float, Date,Text,TIMESTAMP
+from sqlalchemy.sql import func
 
 class Transaction(Base):
     __tablename__ = 'transactions'
@@ -14,8 +15,8 @@ class TaskExecutionLog(Base):
     __tablename__ = "task_execution_logs"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    dag_id = Column(String(255), nullable=False)
-    task_id = Column(String(255), nullable=False)
+    dag_id = Column(String(50), nullable=False)
+    task_id = Column(String(50), nullable=False)
     log_level = Column(String(50), nullable=False)
-    message = Column(Text, nullable=False)
+    message = Column(String(255), nullable=False)
     timestamp = Column(TIMESTAMP, server_default=func.current_timestamp())

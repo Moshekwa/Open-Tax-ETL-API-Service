@@ -1,1 +1,0 @@
-DATABASE_URI = "postgresql+psycopg2://airflow:admin@postgres:5432/airflow"

@@ -1,9 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from config import DATABASE_URL
 
-DATABASE_URI = DATABASE_URL
+DATABASE_URI = "postgresql+psycopg2://airflow:admin@postgres:5432/airflow"
 
 engine = create_engine(DATABASE_URI)
 

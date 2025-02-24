@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from datetime import date
 
 # Validating the response
 class UserTransactionSummary(BaseModel):
@@ -8,3 +7,5 @@ class UserTransactionSummary(BaseModel):
     total_amount: float
     average_transaction_amount: float
 
+    class Config:
+        extra = "forbid"  # Ensuring we dont pass extra fields in the response

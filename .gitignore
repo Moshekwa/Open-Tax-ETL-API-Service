@@ -1,8 +1,10 @@
 /OpenTaxEnv
 .env
 /dags/data
-.idea
+/.idea
 .DS_Store
 /logs
 /config
 /OpenTaxApp/config.py
+/plugins
+/OpenTaxApp/opentaxapi.egg-info

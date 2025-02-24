@@ -7,3 +7,4 @@
 /config
 /OpenTaxApp/config.py
 /plugins
+/OpenTaxApp/opentaxapi.egg-info

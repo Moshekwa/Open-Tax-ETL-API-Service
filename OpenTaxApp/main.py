@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-import gets
-from db import engine, Base
+from routers import gets
+from database_service.db import engine, Base
 
 Base.metadata.create_all(bind=engine)
 

@@ -155,7 +155,7 @@ with DAG(
     dag_id="open_tax_etl",
     description='A simple OpenTax ETL pipeline using Airflow',
     start_date=datetime(2023, 1, 1),
-    schedule_interval="@once", # Triggers DAG Execution at Midnight
+    schedule_interval="@once", # Triggers DAG Execution Manually, @daily to be used to trigger daily
     catchup=False
 ) as dag:
     extract_task = PythonOperator(
